@@ -1,5 +1,6 @@
 # PuppetStuff
-## Tämä repo on luotu säilyttämään Linuxun keskitetyn hallinnan kurssin aikana luotuja moduuleja.
+
+Tämä repo on luotu säilyttämään Linuxun keskitetyn hallinnan kurssin aikana luotuja moduuleja.
 
 Kurssin kotisivut:
 
