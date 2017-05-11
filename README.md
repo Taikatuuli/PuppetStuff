@@ -34,7 +34,7 @@ class apache2 {
 
 Testasin asennusta ja tämä onnistui ongelmitta.
 
-$ sudo puppet apply  -e 'class{"apache2":}' 
+``` $ sudo puppet apply  -e 'class{"apache2":}' ```
 
 ### Vastaus:
 
