@@ -188,7 +188,9 @@ file {'/etc/apache2/mods-enabled/userdir.load':
 }
 ```
 
+Apachen uudelleen käynnistäminen
 
+$ sudo service apache2 restart
 
 ### Kurssin kotisivut:
 
