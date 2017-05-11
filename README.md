@@ -2,9 +2,9 @@
 # H3 ssh portin muutto ja Apache2 asennus ja kotisivun luonti
 
 Tero Karvisen tehtävänanto H3:
-* a) SSHD. Konfiguroi SSH uuteen porttiin Puppetilla.
-* b) Modulit Gittiin. Laita modulisi versionhallintaan niin, että saat ne helposti ajettua uudella Live-USB työpöydällä.
-* c) Etusivu uusiksi. Vaihda Apachen oletusweppisivu (default website) Puppetilla. 
+* SSHD. Konfiguroi SSH uuteen porttiin Puppetilla.
+* Modulit Gittiin. Laita modulisi versionhallintaan niin, että saat ne helposti ajettua uudella Live-USB työpöydällä.
+* Etusivu uusiksi. Vaihda Apachen oletusweppisivu (default website) Puppetilla. 
 
 ## SSH uuteen porttiin 
 
@@ -76,6 +76,18 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 
 UsePAM yes
 ```
+Tarkastin kofiguraation komennolla:
+$ sudo cat /etc/ssh/sshd_config
+
+> # Package generated configuration file
+> # See the sshd_config(5) manpage for details
+
+> # What ports, IPs and protocols we listen for
+> Port 22
+> # Use these options to restrict which interfaces/protocols sshd will bind to
+> #ListenAddress ::
+> #ListenAddress 0.0.0.0
+> Protocol 2
 
 
 ## Apache2
