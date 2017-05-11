@@ -2,14 +2,14 @@
 # H3 ssh portin muutto ja Apache2 asennus ja kotisivun luonti
 
 Tero Karvisen tehtävänanto H3:
-a) SSHD. Konfiguroi SSH uuteen porttiin Puppetilla.
-b) Modulit Gittiin. Laita modulisi versionhallintaan niin, että saat ne helposti ajettua uudella Live-USB työpöydällä.
-c) Etusivu uusiksi. Vaihda Apachen oletusweppisivu (default website) Puppetilla. 
+* a) SSHD. Konfiguroi SSH uuteen porttiin Puppetilla.
+* b) Modulit Gittiin. Laita modulisi versionhallintaan niin, että saat ne helposti ajettua uudella Live-USB työpöydällä.
+* c) Etusivu uusiksi. Vaihda Apachen oletusweppisivu (default website) Puppetilla. 
 
 ## SSH uuteen porttiin 
 
-Halusin muuttaa ssh:n portin muuttujana. 
-init.pp tiedoston sisältö:
+Halusin muuttaa ssh:n portin niin, että porttinumero on muuttujana. 
+### Init.pp tiedoston sisältö:
 
 ```puppet
 class sshd ($port = 22){
