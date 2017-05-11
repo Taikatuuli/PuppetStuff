@@ -1,5 +1,5 @@
 
-# H3 ssh portin muutto ja Apache2 asennus ja kotisivun luonti
+# H3 ssh portin muutto ja Apache2 asennus ja oletussivun muutto 
 
 Tero Karvisen tehtävänanto H3:
 * SSHD. Konfiguroi SSH uuteen porttiin Puppetilla.
@@ -201,3 +201,6 @@ https://github.com/nikaar/puppet/tree/master/modules/apache
 ### SSH palvelin puppetilla:
 
 http://terokarvinen.com/2013/ssh-server-puppet-module-for-ubuntu-12-04
+
+### Uusi oletus kotisivu Apache2
+http://terokarvinen.com/2016/new-default-website-with-apache2-show-your-homepage-at-top-of-example-com-no-tilde
