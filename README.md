@@ -1,5 +1,5 @@
 
-# H3 ssh portin muutto ja Apache2 asennus ja kotisivun luonti
+# H3 ssh portin muutto ja Apache2 asennus ja oletussivun muutto 
 
 Tero Karvisen tehtävänanto H3:
 * SSHD. Konfiguroi SSH uuteen porttiin Puppetilla.
@@ -12,7 +12,7 @@ Halusin muuttaa ssh:n portin niin, että porttinumero on muuttujana.
 ### Init.pp tiedoston sisältö:
 
 ```puppet
-class sshd ($port = 22){
+class sshd ($port = 222){
  
 	package { 'openssh-server':
 		ensure	=> 'latest',
@@ -84,7 +84,7 @@ $ sudo cat /etc/ssh/sshd_config
 
 # What ports, IPs and protocols we listen for
 
-Port 22 
+Port 222 
 #Use these options to restrict which interfaces/protocols sshd will bind to
 #ListenAddress ::
 #ListenAddress 0.0.0.0
@@ -188,7 +188,9 @@ file {'/etc/apache2/mods-enabled/userdir.load':
 }
 ```
 
+Apachen uudelleen käynnistäminen
 
+$ sudo service apache2 restart
 
 ### Kurssin kotisivut:
 
@@ -198,3 +200,9 @@ http://terokarvinen.com/2017/aikataulu-%e2%80%93-linuxin-keskitetty-hallinta-%e2
 
 https://github.com/nikaar/puppet/tree/master/modules/apache
 
+### SSH palvelin puppetilla:
+
+http://terokarvinen.com/2013/ssh-server-puppet-module-for-ubuntu-12-04
+
+### Uusi oletus kotisivu Apache2
+http://terokarvinen.com/2016/new-default-website-with-apache2-show-your-homepage-at-top-of-example-com-no-tilde
