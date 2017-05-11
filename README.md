@@ -1,23 +1,19 @@
 
 # H3 sshd portin muutto ja Apache2 asennus ja kotisivun luonti
 
-Tero Karvisen tehtävänanto:
-
-h3. 
+Tero Karvisen tehtävänanto H3:
 a) SSHD. Konfiguroi SSH uuteen porttiin Puppetilla.
-
 b) Modulit Gittiin. Laita modulisi versionhallintaan niin, että saat ne helposti ajettua uudella Live-USB työpöydällä.
-
 c) Etusivu uusiksi. Vaihda Apachen oletusweppisivu (default website) Puppetilla. 
 
 ### Apache2
 
 Käytin ensimmäisen kotitehtävän moduuli pohjaa jossa olin asentanut Apache2:sen.
 
-init.pp sisältö:
+### init.pp tiedoston sisältö:
 
+```puppet
 class apache2 {
-
    	package { "apache2":
 		ensure => "installed"
 	}
@@ -34,10 +30,11 @@ class apache2 {
         	require => Package["apache2"],
     	}
 }
+```
 
 Testasin asennusta ja tämä onnistui ongelmitta.
 
-$ sudo puppet apply  -e 'class{"apache2":}'  
+$ sudo puppet apply  -e 'class{"apache2":}' 
 
 ### Vastaus:
 
@@ -45,11 +42,11 @@ Notice: Compiled catalog for spiderstorm.eqfgq4capfouriaj4cztiwndne.fx.internal.
 Notice: /Stage[main]/Apache2/Exec[userdir]/returns: executed successfully
 
 
-Lisäsin luokkaan filen ja template tiedostot luokkalaiseni Niko Kaartisen tehtävän mukaan. 
+Lisäsin luokkaan filen ja template tiedostot luokkalaiseni Niko Kaartisen tehtävän mukaan. Muokkasin vain käyttäjänimet ja ryhmät oikeaksi.
 https://github.com/nikaar/puppet/tree/master/modules/apache
 
-
-	file {'/etc/apache2/mods-enabled/userdir.load':
+```puppet
+file {'/etc/apache2/mods-enabled/userdir.load':
 		ensure => "link",
 		target => "/etc/apache2/mods-available/userdir.load",
 		notify => Service["apache2"],
@@ -104,13 +101,13 @@ https://github.com/nikaar/puppet/tree/master/modules/apache
 	}	
 
 }
+```
 
-
-# Kurssin kotisivut:
+### Kurssin kotisivut:
 
 http://terokarvinen.com/2017/aikataulu-%e2%80%93-linuxin-keskitetty-hallinta-%e2%80%93-ict4tn011-11-%e2%80%93-loppukevat-2017-p2
 
-# Niko Kaartisen esimerkki:
+### Niko Kaartisen esimerkki:
 
 https://github.com/nikaar/puppet/tree/master/modules/apache
 
