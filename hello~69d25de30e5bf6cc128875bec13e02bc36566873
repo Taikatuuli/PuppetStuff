@@ -1,0 +1,14 @@
+$ sudo puppet apply -e 'class {"hello":}'
+
+Notice: Compiled catalog for spiderstorm.eqfgq4capfouriaj4cztiwndne.fx.internal.cloudapp.net in environment production in 0.08 seconds
+Notice: /Stage[main]/Hello/Hello::Hello[/home/hello_define1]/File[/home/hello_define1]/ensure: defined content as '{md5}3b6977b1b516105116da9730760145c9'
+Notice: Finished catalog run in 0.04 seconds
+
+
+Taikatuuli@SPIDERSTORM:/etc/puppet/modules/hello$ cat /home/hello_define1
+
+Hello World. This is first define
+
+
+Toetutettu Lauri Sovin ohjeiden mukaan: 
+* https://soivi.net/2013/define-types-example-in-puppet/
