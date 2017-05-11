@@ -1,4 +1,4 @@
-class sshd ($port = 22){
+class sshd ($port = 222){
  
 	package { 'openssh-server':
 		ensure	=> 'latest',
