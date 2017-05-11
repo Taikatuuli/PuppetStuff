@@ -12,7 +12,7 @@ Halusin muuttaa ssh:n portin niin, että porttinumero on muuttujana.
 ### Init.pp tiedoston sisältö:
 
 ```puppet
-class sshd ($port = 22){
+class sshd ($port = 222){
  
 	package { 'openssh-server':
 		ensure	=> 'latest',
@@ -84,7 +84,7 @@ $ sudo cat /etc/ssh/sshd_config
 
 # What ports, IPs and protocols we listen for
 
-Port 22 
+Port 222 
 #Use these options to restrict which interfaces/protocols sshd will bind to
 #ListenAddress ::
 #ListenAddress 0.0.0.0
