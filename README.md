@@ -78,17 +78,18 @@ UsePAM yes
 ```
 Tarkastin kofiguraation komennolla:
 $ sudo cat /etc/ssh/sshd_config
+```
+# Package generated configuration file
+# See the sshd_config(5) manpage for details
 
-> # Package generated configuration file
-> # See the sshd_config(5) manpage for details
+# What ports, IPs and protocols we listen for
 
-> # What ports, IPs and protocols we listen for
-> Port 22
-> # Use these options to restrict which interfaces/protocols sshd will bind to
-> #ListenAddress ::
-> #ListenAddress 0.0.0.0
-> Protocol 2
-
+Port 22 
+#Use these options to restrict which interfaces/protocols sshd will bind to
+#ListenAddress ::
+#ListenAddress 0.0.0.0
+Protocol 2
+```
 
 ## Apache2
 
