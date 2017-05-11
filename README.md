@@ -1,12 +1,84 @@
 
-# H3 sshd portin muutto ja Apache2 asennus ja kotisivun luonti
+# H3 ssh portin muutto ja Apache2 asennus ja kotisivun luonti
 
 Tero Karvisen tehtävänanto H3:
 a) SSHD. Konfiguroi SSH uuteen porttiin Puppetilla.
 b) Modulit Gittiin. Laita modulisi versionhallintaan niin, että saat ne helposti ajettua uudella Live-USB työpöydällä.
 c) Etusivu uusiksi. Vaihda Apachen oletusweppisivu (default website) Puppetilla. 
 
-### Apache2
+## SSH uuteen porttiin 
+
+Halusin muuttaa ssh:n portin muuttujana. 
+init.pp tiedoston sisältö:
+
+```puppet
+class sshd ($port = 22){
+ 
+	package { 'openssh-server':
+		ensure	=> 'latest',
+	}
+	
+	file {'etc/ssh/sshd_config':
+		content => template ("sshd/sshd_config.erb"),
+		require => Package ["openssh-server"],
+		notify => Service ["ssh"],
+	}
+
+	service { 'sshd':
+		ensure	=> 'running',
+		enabled	=> 'true',	
+		require => Package ["openssh-server"],
+	}
+}
+```
+
+sshd_config.erb tiedoston lyhennetty sisältö:
+ 
+```puppet
+Port <%= @port %>
+Protocol 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+UsePrivilegeSeparation yes
+
+KeyRegenerationInterval 3600
+ServerKeyBits 1024
+
+SyslogFacility AUTH
+LogLevel INFO
+
+LoginGraceTime 120
+PermitRootLogin prohibit-password
+StrictModes yes
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+
+IgnoreRhosts yes
+RhostsRSAAuthentication no
+HostbasedAuthentication no
+
+PermitEmptyPasswords no
+
+ChallengeResponseAuthentication no
+
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+
+AcceptEnv LANG LC_*
+
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+UsePAM yes
+```
+
+
+## Apache2
 
 Käytin ensimmäisen kotitehtävän moduuli pohjaa jossa olin asentanut Apache2:sen.
 
@@ -102,6 +174,8 @@ file {'/etc/apache2/mods-enabled/userdir.load':
 
 }
 ```
+
+
 
 ### Kurssin kotisivut:
 
