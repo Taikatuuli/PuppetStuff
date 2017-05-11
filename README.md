@@ -198,3 +198,6 @@ http://terokarvinen.com/2017/aikataulu-%e2%80%93-linuxin-keskitetty-hallinta-%e2
 
 https://github.com/nikaar/puppet/tree/master/modules/apache
 
+### SSH palvelin puppetilla:
+
+http://terokarvinen.com/2013/ssh-server-puppet-module-for-ubuntu-12-04
